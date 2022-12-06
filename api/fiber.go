@@ -24,12 +24,16 @@ import (
 	//fmt.Scanln(&input.Name)
 	inputs[input.Name] = *input
     
-	c.Status(200).JSON(&fiber.Map{ 
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"responce" :  "Received Request" ,
+		"input_data": input,
+	})
+/*	c.Status(200).JSON(&fiber.Map{ 
         "responce" :  "Received Request" ,
 		"input_data": input,
-	}) 
+	})  */
   
-	return nil
+	//return nil
  }
 
 func inputData(c *fiber.Ctx) error {
