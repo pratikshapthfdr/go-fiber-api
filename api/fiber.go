@@ -32,7 +32,7 @@ import (
 	return nil
  }
 
-func readArticles(c *fiber.Ctx) error {
+func inputData(c *fiber.Ctx) error {
 	c.Status(200).JSON(&fiber.Map{
 		"inputs": inputs,
 	})
@@ -41,9 +41,10 @@ func readArticles(c *fiber.Ctx) error {
 
 func SetupRoute() *fiber.App {
 	app := *fiber.New() 
+	app.Get("/api/v1/inputs/:id", inputData)
 	//app.Post("/api/v1/inputs/responce", "Received Request")
 	app.Post("/api/v1/inputs", createInput)
    // app.Get("/api/v1/articles/:id", readArticle)
-     app.Get("/api/v1/inputs/:id", readArticles)
+    
 return &app
 }
